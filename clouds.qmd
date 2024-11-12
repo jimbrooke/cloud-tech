@@ -1,0 +1,67 @@
+---
+title: "Clouds"
+format: html
+---
+
+## Distributed Computing {#sec-distributed}
+
+Some tasks cannot be performed by a single computer.  Or they can, but they would take far too long.  Or they can, but the risk of failure associated with a single computer is too high.  Or they can, but sometimes a huge number of tasks are required at the same time.  In all these cases, methods of delegating those tasks to multiple computers are required.
+
+Distributed computing is a broad term that refers to applications which rely on a network of computers.  Such applications can provide greater resilience and reliability, as well as being able to solve "bigger" problems.
+
+
+### Distributed vs Parallel Computing{#sec-htc-vs-hpc}
+
+It is helpful to draw a distinction between "distributed computing" and "parallel computing". Parallel computing is another broad term, covering techniques which allow a computational problem to be split between several processors. There is clearly some overlap between the two terms, but parallel computing tends to apply to tighly-coupled problems, where the computation requires high-bandwith, low-latency messaging between processors, which potentially have access to shared memory.  Typical problems might include domain decomposition solvers, linear algebra, FFTs, N-body systems.
+
+Distributed computing, on the other hand, refers to loosely-coupled problems, where many processors are required, but requirements on connectivity between processors are lower. Examples include Monte Carlo simulation, image/data processing applications, or supporting a very large number of users. The latter includes essentially all the apps on your phone.
+
+Supporting a huge user base is rarely a requirement in science (although there are examples of apps which collect scientific data, eg. [the CREDO app](https://play.google.com/store/apps/details?id=science.credo.mobiledetector&hl=en_GB&pli=1), see also <https://arxiv.org/abs/1709.05230v2>). However, processing of very large datasets is increasingly a challenge for science, and distributed (or cloud) computing can provide solutions.
+
+Frequently we refer to High Performance Computing (HPC) for systems with high bandwidth/low latency interconnects between processors, and High Throughput Computing (HTC) for systems comprising processors connected by standard networks.
+
+## Challenges {#sec-htc-challenges}
+
+Distributed computing offers the potential to eg. process very large datasets using standard computer hardware, but it also brings challenges. For example :
+
+   - Management of servers, network equipment, power, cooling, noise
+   - Replacement of failed equipment
+   - Scaling applications across many devices
+   - Load balancing (or ensuring the work is spread out over the system, and there is not one piece that holds everything up)
+   - Resilience and fault tolerance. (Ensuring the system keeps working while you are replacing a failed unit)
+
+These challenges can be reduced by using cloud technology.
+
+## The Cloud {#sec-cloud}
+
+"The Cloud" is a very broad, not terribly well defined, term.  We will talk about "clouds" as collections of computers, connected via the internet, which are used to provide services to consumers, solving some of the challenges described above.
+
+Typically, these services are provided to the public.  We call this the public cloud.  Examples include AWS (Amazon Web Services), Microsoft Azure, Google Cloud.
+
+Some organisations will create their own private clouds to manage privately owned hardware and applications. Different branches of the organisation become provider and consumer.  Private clouds will rely on much of the same technology as public clouds.  We will consider public clouds only from here on.
+
+
+## Cloud Models {#sec-cloud-models}
+
+Public cloud providers use a range of models to provide cloud services to their customers.
+
+
+### Software as a Service (SaaS) {#sec-saas}
+
+In this model, the provider delivers an application over the network, and the customer uses the application.  The provider takes care of all the hardware and software required to run the application, minimising overheads for the customer. However, the customer has no significant control over the features provided by the application. Examples include Google docs, MS Office 365.
+
+### Platform as a Service (PaaS) {#sec-paas}
+
+This model gives the customer more flexibility over the application than SaaS, while at the same time reducing the system management overheads. The cloud provider delivers everything required to build and run applications - virtual servers, operating system, databases, and other "middleware" (eg. web servers, message passing software). The customer then develops and deploys their application - which they may either use themselves, or provide to their own customers as SaaS.  Examples include most use of AWS.
+
+### Infrastructure as a Service (IaaS) {#sec-iaas}
+
+This model gives the customer maximum control over their system, but alleviates the need for them to manage their own hardware. The cloud provider delivers virtualised servers, storage, network infrastructure on demand. The customer manages their virtual servers, deploying operating systems and middleware, as well as development and deployment of the application(s) they use or provide to their own customers.
+
+## Cloud Technology {#sec-cloud-tech}
+
+This is the software upon which clouds are built. Typically, the big cloud providers provide their own toolsets for building and managing applications within their environments. So most cloud development takes places within an eco-system provided by a major supplier (AWS, Azure, Google Cloud). But some pieces and concepts are common to them all. In particular, these include :
+
+   - Virtual Machines
+   - Containers
+   - Cluster Management

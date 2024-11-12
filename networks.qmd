@@ -1,0 +1,64 @@
+---
+title: "Network Basics"
+format: html
+---
+
+In addition to a basic understanding of the elements of a computer, we also need a basic understanding of computer networks.
+
+## Network Hardware
+
+A network is a collection of computers that can communicate with each other. This communication requires a physical connection (eg. electrical, optical, radio) as well as a protocol for communication.
+
+A network can in principle be constructed from a set of general purpose computers. However, networks in practise rely on dedicated hardware which is designed to receive/transmit/route data between connected devices. (By implementing layers 1-4 of the OSI model shown in @tbl-osi). Frequently we refer to "switches", which connect devices to form a network, and "routers", which provide connections between networks.
+
+Real networks usually comprise networks of multiple such devices, with general purpose computers connected only at the edges.
+
+## Network Layers {#sec-network-layers}
+
+A useful network typically comprises multiple layers of protocols/specifications, where each layer serves a particular purpose, and builds on the layers below it. The Open Systems Interconnection model of network layers is shown in @tbl-osi.  Note that this is a _model_ of how a network operates, rather than a specification.
+
+| N | Layer | Purpose | Example |
+|-|--|----|---|
+| 7 | Application layer | Communication between applications | HTTP, SMTP, SSH |
+| 6 | Presentation layer | Encryption, compression |  |
+| 5 | Session layer | Establish and maintain a connection |  |
+| 4 | Transport layer | Flow control, error control, packet ordering | Transmission control protocol (TCP) |
+| 3 | Network layer | Connections between networks | IPv4, IPv6 |
+| 2 | Data-link layer | Data format and addressing | Ethernet (IEEE 802.3), Wifi (IEEE 802.11) |
+| 1 | Physical layer | Physical connection | Electrical, optical, RF |
+: OSI model of network layers {#tbl-osi}
+
+### MAC Address {#sec-mac}
+
+To ensure messages end up at the right place in the network, every device needs to have an _address_. In practise, several of the network layers include the concept of addressing. The MAC address is the address of the device on the local networ.  It is associated with Layer 2, and as such is only used to route messages (packets) within the _local_ network. It is typically set by the device hardware/firmware and may be printed on the object, so it is not usually (or easily) changed.
+
+### IP Address {#sec-ip}
+
+The IP address is the "internet address" of the device.  This address is associated with Layer 3, and allows a device to be addressed from outside the local network. The IP address is usually set in software, often dynamically when a device connects to a network - using, for example, the DHCP protocol.
+
+### Port {#sec-port}
+
+A particular device may be able to receive and respond to messages from a variety of high-level protocols.  In order to ensure each messages is received by the correct _application_ running on the device, a _port_ number may be specified. The port is a virtual endpoint for communication between applications. Some protocols/applications are associated with standardised ports.  For example, SSH usually uses port 22, HTML usually uses port 80.
+
+### DNS (Domain Name Service) {#sec-dns}
+
+The DNS is a service which converts IP addresses to _domain names_ and vice versa. The domain name is a human readable placeholder for an IP address, or set of IP addresses. For example, the domain **bris.ac.uk** is currently associated with the IP address **137.222.1.237**.  All internet connected devices must be able to access a DNS server to function.  Some web pages provide a human readable version, for example <https://www.nslookup.io/>.
+
+
+### Uniform Resource Locator (URL) {#sec-url}
+
+The uniform resource locator (URL) is a method to specify what you want to communicate with, and how.  The components of the URL are :
+
+<span style="color:green;">scheme</span>:<span style="color:red;">[//[user@]host[:port]/]</span><span style="color:blue;">path</span><span style="color:brown;">[?query]</span><span style="color:purple;">[#fragment]</span>
+
+Here are some examples :
+<span style="color:green;">http</span>:<span style="color:red;">//www.bristol.ac.uk/</span>
+
+<span style="color:green;">https</span>:<span style="color:red;">//www.bris.ac.uk</span><span style="color:blue;">/unit-programme-catalogue/UnitDetails.jsa</span><span style="color:brown;">?unitCode=SCIFM0004</span>
+
+<span style="color:green;">smtp</span>:<span style="color:blue;">james.brooke@bristol.ac.uk</span>
+
+<span style="color:green;">http</span>:<span style="color:red;">//127.0.0.1:8888</span><span style="color:brown;">/?token=2e5368b235b174386888fa6719af814a3acfa5caee2d8a1e</span>
+
+<span style="color:green;">ftp</span>:<span style="color:red;">//user:password@ftp.server.com</span>
+

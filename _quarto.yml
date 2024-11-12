@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Cloud Technology"
+  author: "Jim Brooke"
+  date: "11/5/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - computers.qmd
+    - networks.qmd
+    - clouds.qmd
+    - vms.qmd
+    - containers.qmd
+    - clusters.qmd
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

@@ -1,0 +1,10 @@
+# Introduction
+
+This segment will introduce "cloud technology", and how it can be used for scientific applications.
+
+In order to understand what we mean by cloud technology, and how it is useful, we first discuss some basic concepts in computer hardware and networking. We then discuss some of the important components of cloud technology : virtual machines, containers and clusters.
+
+These course notes are intended to support the examples you will encounter in practical workshops. Information on the workshops can be found at :
+<https://github.com/jimbrooke/cloud-tutorial>
+
+
