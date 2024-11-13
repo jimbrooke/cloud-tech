@@ -1,0 +1,162 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Cloud Technology",
+    "section": "",
+    "text": "Preface\nThese are the course notes for the Cloud Technology segment of SCIFM004 Special Core in Software Engineering.\nThis site was produced with Quarto (https://quarto.org/docs/books).",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This segment will introduce “cloud technology”, and how it can be used for scientific applications.\nIn order to understand what we mean by cloud technology, and how it is useful, we first discuss some basic concepts in computer hardware and networking. We then discuss some of the important components of cloud technology : virtual machines, containers and clusters.\nThese course notes are intended to support the examples you will encounter in practical workshops. Information on the workshops can be found at : https://github.com/jimbrooke/cloud-tutorial",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "computers.html",
+    "href": "computers.html",
+    "title": "2  Computer Basics",
+    "section": "",
+    "text": "2.1 Computer Hardware\nA schematic of the internal organisation of a computer is shown in Figure 2.1.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Computer Basics</span>"
+    ]
+  },
+  {
+    "objectID": "computers.html#sec-hardware",
+    "href": "computers.html#sec-hardware",
+    "title": "2  Computer Basics",
+    "section": "",
+    "text": "Figure 2.1: Schematic of a computer\n\n\n\n\n2.1.1 Processor\nThe computer needs some processing capability. Traditionally, this was provided by a single Central Processing Unit (CPU). The CPU executes a sequences of instructions that it reads from a program. Modern computers can accommodate multiple CPU devices, each of which likely has multiple CPU “cores”, all of which operate in parallel. There are a variety of CPU architectures in use, each with a corresponding instruction set (see Section 2.2.1).\n\n\n2.1.2 Additional processors\nA range of additional processors (also known as co-processors) are often used. These are generally tailored to a specific task or class of tasks. Examples include :\n\nGraphics Processing Unit (GPU). These were originally designed to offload graphics processing tasks, though modern GPUs are used in a wide variety of applications. Typically these can be classified as vector processing applications, where a single instruction is applied to multiple data.\nNeural Processing Unit (NPU). These are processors dedicated to accelerating the computationally intensive tasks involved in Artifical Intelligence/Machine Learning.\nFPGA Accelerator. A Field-Programmable Gate Array allows the user to implement specific operation required by an application at gate level, which potentially offers very large speed gains.\n\n\n\n2.1.3 Memory\nThe computer needs to store and retrieve the program in order to operate, and most likely the program will require variables and other data to be stored while it is running. This is typically provided by Random Access Memory (RAM).\n\n\n2.1.4 Storage\nRAM devices only store data while supplied with power. In order to store data while the computer is powered off, and as a backup in case the data stored in RAM becomes corrupted, permanent storage is required. Historically this has used tape drives, magnetic disc drives, optical disc drives (CDs) and more. Modern computers use Solid State Drives - persistent storage based on silicon devices.\n\n\n2.1.5 Network Interface\nIn order to communicate with other computers, the computer must be connected to a network. This typically uses either a physical or wireless network connection. The standard for network communication is known as Ethernet (see Section 3.2).\n\n\n2.1.6 Peripherals\nPeripherals such as screen, keyboard and mouse, allow the user to interact with the computer.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Computer Basics</span>"
+    ]
+  },
+  {
+    "objectID": "computers.html#sec-software",
+    "href": "computers.html#sec-software",
+    "title": "2  Computer Basics",
+    "section": "2.2 Computer Software",
+    "text": "2.2 Computer Software\n\n2.2.1 Instruction Set\nThe instruction set specifies the instructions available for a given processor. These are typically very low level (eg. retrieve some data from a specified memory location, add two numbers together, write the result into a specific memory location, …). Different CPU architectures have different instruction sets. A table of common architectures is shown in Table 2.1.\n\n\n\nTable 2.1: Selection of commonly used CPU architectures\n\n\n\n\n\nArchitecture\nManufacturer\nDates\nExamples\n\n\n\n\nx86 (32 bit)\nIntel\n1978-present\nPCs\n\n\nx86-64\nAMD\n1999-present\nRecent PCs, servers\n\n\nia64\nHP/Intel\n2001-2021\nEnterprise servers\n\n\nPowerPC\nApple/IBM/Motorola\n1991\nIBM/Apple PCs, phones\n\n\narm (32 bit)\nARM\n1981-present\nBBC micro, smartphones, tablets\n\n\narm64\nARM\n\nRecent smartphones, tablets, Apple MacBooks\n\n\n\n\n\n\nKnowing the architecture of any hardware you are using is important when dealing with virtual machines (?sec-vms) and containers (?sec-containers). You should identify the architecture of the cpu in your laptop.\n\n\n\n2.2.2 Compiler/Interpreter\nWriting programs using the instruction set (known as machine code) is laborious and inefficient, given the limited set of operations within the instruction set. A compiler is a software program which allows a software developer to write programs in a high level language, such as C or C++, which may have much more powerful concepts. The high level code is first converted by the compiler to machine code, which is then run by the CPU in a second step.\nAn interpreter performs the same task as a compiler, but the conversion to machine code happens during execution of the program, ie. it is a single step process unlike two step compilation. This may result in less efficient machine code than a compliler would produce, but in practise this may not be an issue. Python is an example of an interpreted language.\n\n\n2.2.3 Operating System\n\nThe operating system is a program (or set of programs) which run when the computer is started. It will manage access to shared components (such as memory, or storage) and provide an interface for applications to access them. Examples are given in Table 2.2.\n\n\n\nTable 2.2: Selection of common operating systems\n\n\n\n\n\n\n\n\n\n\n\nOS\nDeveloper\nDates\nNotes\n\n\n\n\nUNIX\nBell labs\n1969-present\nMany versions/distributors. Desktop/server.\n\n\nWindows\nMicrosoft\n1985-present\nDesktop/laptop PC. Separate server editions.\n\n\nLinux\nLinus Torvalds (open source)\n1991-present\nMany versions/distributors. Desktop/laptop & server.\n\n\nOSX/macOS\nApple\n2001-present\nApple desktops/laptops\n\n\niOS/iPad\nApple\n2007-present\nMobile/tablet\n\n\nAndroid\nGoogle\n2008-present\nMobile/tablet, based on Linux\n\n\nWindows phone\nMicrosoft\n2010-2020\nMobile/tablet\n\n\n\n\n\n\n\n\n2.2.4 User Accounts\nUser accounts allow access to particular functionality to be controlled. This may include limited access to data, or limiting access to functions that could disrupt the functioning of the computer (such as updating the OS). Often, files and devices will have an associated set of “permissions”, which control the level of access different users have to that file or device.\n\n\n2.2.5 Filesystem\nThe filesystem is a mechanism for organising use of storage. Most operating systems come with a built-in filesystem, but storage of large datasets will often use dedicated distributed filesystem software.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Computer Basics</span>"
+    ]
+  },
+  {
+    "objectID": "networks.html",
+    "href": "networks.html",
+    "title": "3  Network Basics",
+    "section": "",
+    "text": "3.1 Network Hardware\nA network is a collection of computers that can communicate with each other. This communication requires a physical connection (eg. electrical, optical, radio) as well as a protocol for communication.\nA network can in principle be constructed from a set of general purpose computers. However, networks in practise rely on dedicated hardware which is designed to receive/transmit/route data between connected devices. (By implementing layers 1-4 of the OSI model shown in Table 3.1). Frequently we refer to “switches”, which connect devices to form a network, and “routers”, which provide connections between networks.\nReal networks usually comprise networks of multiple such devices, with general purpose computers connected only at the edges.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Network Basics</span>"
+    ]
+  },
+  {
+    "objectID": "networks.html#sec-network-layers",
+    "href": "networks.html#sec-network-layers",
+    "title": "3  Network Basics",
+    "section": "3.2 Network Layers",
+    "text": "3.2 Network Layers\nA useful network typically comprises multiple layers of protocols/specifications, where each layer serves a particular purpose, and builds on the layers below it. The Open Systems Interconnection model of network layers is shown in Table 3.1. Note that this is a model of how a network operates, rather than a specification.\n\n\n\nTable 3.1: OSI model of network layers\n\n\n\n\n\n\n\n\n\n\n\nN\nLayer\nPurpose\nExample\n\n\n\n\n7\nApplication layer\nCommunication between applications\nHTTP, SMTP, SSH\n\n\n6\nPresentation layer\nEncryption, compression\n\n\n\n5\nSession layer\nEstablish and maintain a connection\n\n\n\n4\nTransport layer\nFlow control, error control, packet ordering\nTransmission control protocol (TCP)\n\n\n3\nNetwork layer\nConnections between networks\nIPv4, IPv6\n\n\n2\nData-link layer\nData format and addressing\nEthernet (IEEE 802.3), Wifi (IEEE 802.11)\n\n\n1\nPhysical layer\nPhysical connection\nElectrical, optical, RF\n\n\n\n\n\n\n\n3.2.1 MAC Address\nTo ensure messages end up at the right place in the network, every device needs to have an address. In practise, several of the network layers include the concept of addressing. The MAC address is the address of the device on the local networ. It is associated with Layer 2, and as such is only used to route messages (packets) within the local network. It is typically set by the device hardware/firmware and may be printed on the object, so it is not usually (or easily) changed.\n\n\n3.2.2 IP Address\nThe IP address is the “internet address” of the device. This address is associated with Layer 3, and allows a device to be addressed from outside the local network. The IP address is usually set in software, often dynamically when a device connects to a network - using, for example, the DHCP protocol.\n\n\n3.2.3 Port\nA particular device may be able to receive and respond to messages from a variety of high-level protocols. In order to ensure each messages is received by the correct application running on the device, a port number may be specified. The port is a virtual endpoint for communication between applications. Some protocols/applications are associated with standardised ports. For example, SSH usually uses port 22, HTML usually uses port 80.\n\n\n3.2.4 DNS (Domain Name Service)\nThe DNS is a service which converts IP addresses to domain names and vice versa. The domain name is a human readable placeholder for an IP address, or set of IP addresses. For example, the domain bris.ac.uk is currently associated with the IP address 137.222.1.237. All internet connected devices must be able to access a DNS server to function. Some web pages provide a human readable version, for example https://www.nslookup.io/.\n\n\n3.2.5 Uniform Resource Locator (URL)\nThe uniform resource locator (URL) is a method to specify what you want to communicate with, and how. The components of the URL are :\nscheme:[//[user@]host[:port]/]path[?query][#fragment]\nHere are some examples : http://www.bristol.ac.uk/\nhttps://www.bris.ac.uk/unit-programme-catalogue/UnitDetails.jsa?unitCode=SCIFM0004\nsmtp:james.brooke@bristol.ac.uk\nhttp://127.0.0.1:8888/?token=2e5368b235b174386888fa6719af814a3acfa5caee2d8a1e\nftp://user:password@ftp.server.com",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Network Basics</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html",
+    "href": "clouds.html",
+    "title": "4  Clouds",
+    "section": "",
+    "text": "4.1 Distributed Computing\nSome tasks cannot be performed by a single computer. Or they can, but they would take far too long. Or they can, but the risk of failure associated with a single computer is too high. Or they can, but sometimes a huge number of tasks are required at the same time. In all these cases, methods of delegating those tasks to multiple computers are required.\nDistributed computing is a broad term that refers to applications which rely on a network of computers. Such applications can provide greater resilience and reliability, as well as being able to solve “bigger” problems.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html#sec-distributed",
+    "href": "clouds.html#sec-distributed",
+    "title": "4  Clouds",
+    "section": "",
+    "text": "4.1.1 Distributed vs Parallel Computing\nIt is helpful to draw a distinction between “distributed computing” and “parallel computing”. Parallel computing is another broad term, covering techniques which allow a computational problem to be split between several processors. There is clearly some overlap between the two terms, but parallel computing tends to apply to tighly-coupled problems, where the computation requires high-bandwith, low-latency messaging between processors, which potentially have access to shared memory. Typical problems might include domain decomposition solvers, linear algebra, FFTs, N-body systems.\nDistributed computing, on the other hand, refers to loosely-coupled problems, where many processors are required, but requirements on connectivity between processors are lower. Examples include Monte Carlo simulation, image/data processing applications, or supporting a very large number of users. The latter includes essentially all the apps on your phone.\nSupporting a huge user base is rarely a requirement in science (although there are examples of apps which collect scientific data, eg. the CREDO app, see also https://arxiv.org/abs/1709.05230v2). However, processing of very large datasets is increasingly a challenge for science, and distributed (or cloud) computing can provide solutions.\nFrequently we refer to High Performance Computing (HPC) for systems with high bandwidth/low latency interconnects between processors, and High Throughput Computing (HTC) for systems comprising processors connected by standard networks.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html#sec-htc-challenges",
+    "href": "clouds.html#sec-htc-challenges",
+    "title": "4  Clouds",
+    "section": "4.2 Challenges",
+    "text": "4.2 Challenges\nDistributed computing offers the potential to eg. process very large datasets using standard computer hardware, but it also brings challenges. For example :\n\nManagement of servers, network equipment, power, cooling, noise\nReplacement of failed equipment\nScaling applications across many devices\nLoad balancing (or ensuring the work is spread out over the system, and there is not one piece that holds everything up)\nResilience and fault tolerance. (Ensuring the system keeps working while you are replacing a failed unit)\n\nThese challenges can be reduced by using cloud technology.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html#sec-cloud",
+    "href": "clouds.html#sec-cloud",
+    "title": "4  Clouds",
+    "section": "4.3 The Cloud",
+    "text": "4.3 The Cloud\n“The Cloud” is a very broad, not terribly well defined, term. We will talk about “clouds” as collections of computers, connected via the internet, which are used to provide services to consumers, solving some of the challenges described above.\nTypically, these services are provided to the public. We call this the public cloud. Examples include AWS (Amazon Web Services), Microsoft Azure, Google Cloud.\nSome organisations will create their own private clouds to manage privately owned hardware and applications. Different branches of the organisation become provider and consumer. Private clouds will rely on much of the same technology as public clouds. We will consider public clouds only from here on.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html#sec-cloud-models",
+    "href": "clouds.html#sec-cloud-models",
+    "title": "4  Clouds",
+    "section": "4.4 Cloud Models",
+    "text": "4.4 Cloud Models\nPublic cloud providers use a range of models to provide cloud services to their customers.\n\n4.4.1 Software as a Service (SaaS)\nIn this model, the provider delivers an application over the network, and the customer uses the application. The provider takes care of all the hardware and software required to run the application, minimising overheads for the customer. However, the customer has no significant control over the features provided by the application. Examples include Google docs, MS Office 365.\n### Platform as a Service (PaaS) {#sec-paas}\nThis model gives the customer more flexibility over the application than SaaS, while at the same time reducing the system management overheads. The cloud provider delivers everything required to build and run applications - virtual servers, operating system, databases, and other “middleware” (eg. web servers, message passing software). The customer then develops and deploys their application - which they may either use themselves, or provide to their own customers as SaaS. Examples include most use of AWS.\n\n\n4.4.2 Infrastructure as a Service (IaaS)\nThis model gives the customer maximum control over their system, but alleviates the need for them to manage their own hardware. The cloud provider delivers virtualised servers, storage, network infrastructure on demand. The customer manages their virtual servers, deploying operating systems and middleware, as well as development and deployment of the application(s) they use or provide to their own customers.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "clouds.html#sec-cloud-tech",
+    "href": "clouds.html#sec-cloud-tech",
+    "title": "4  Clouds",
+    "section": "4.5 Cloud Technology",
+    "text": "4.5 Cloud Technology\nThis is the software upon which clouds are built. Typically, the big cloud providers provide their own toolsets for building and managing applications within their environments. So most cloud development takes places within an eco-system provided by a major supplier (AWS, Azure, Google Cloud). But some pieces and concepts are common to them all. In particular, these include :\n\nVirtual Machines\nContainers\nCluster Management",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Clouds</span>"
+    ]
+  },
+  {
+    "objectID": "vms.html",
+    "href": "vms.html",
+    "title": "5  Virtual Machines",
+    "section": "",
+    "text": "Content coming",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Virtual Machines</span>"
+    ]
+  },
+  {
+    "objectID": "containers.html",
+    "href": "containers.html",
+    "title": "6  Containers",
+    "section": "",
+    "text": "Content coming",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Containers</span>"
+    ]
+  },
+  {
+    "objectID": "clusters.html",
+    "href": "clusters.html",
+    "title": "7  Clusters",
+    "section": "",
+    "text": "Content coming",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Clusters</span>"
+    ]
+  }
+]
