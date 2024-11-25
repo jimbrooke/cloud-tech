@@ -160,7 +160,19 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#container-software" id="toc-container-software" class="nav-link active" data-scroll-target="#container-software"><span class="header-section-number">6.1</span> Container Software</a>
+  <ul class="collapse">
+  <li><a href="#container-engines" id="toc-container-engines" class="nav-link" data-scroll-target="#container-engines"><span class="header-section-number">6.1.1</span> Container Engines</a></li>
+  <li><a href="#container-creation" id="toc-container-creation" class="nav-link" data-scroll-target="#container-creation"><span class="header-section-number">6.1.2</span> Container creation</a></li>
+  <li><a href="#container-repositories" id="toc-container-repositories" class="nav-link" data-scroll-target="#container-repositories"><span class="header-section-number">6.1.3</span> Container repositories</a></li>
+  </ul></li>
+  <li><a href="#workshop" id="toc-workshop" class="nav-link" data-scroll-target="#workshop"><span class="header-section-number">6.2</span> Workshop</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -184,9 +196,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Content coming</p>
+<p>Containers are an extension of the VM concept and are now a foundational technology in cloud computing. A container is a lightweight, standalone, and executable software package that includes everything needed to run a piece of software. It will include code, runtime, libraries and system tools.</p>
+<p>Containers share a “kernel” with the host OS. The kernel is the part of the OS that is always running. It has complete control over the system, controlling all hardware, managing access by applications, preventing conflicts. By sharing the kernel with the host, containers are highly efficient. But it also places significant limitations on the container, which must use the same kernel as the host OS. In practise, this means containers are all Linux based. Container engines typically come with an option to create a VM. The user sees a container, but this is running inside a VM, allowing operation on Mac, Windows (and allowing portability between Linux kernel versions).</p>
+<section id="container-software" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="container-software"><span class="header-section-number">6.1</span> Container Software</h2>
+<p>Containers are typically distributed as “images”, which are fast and easy to start up and run. Containers were originally introduced by Docker, along with an image format. This format is now standardised by the <a href="https://opencontainers.org/">Open Container Initiative (OCI)</a>.</p>
+<section id="container-engines" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="container-engines"><span class="header-section-number">6.1.1</span> Container Engines</h3>
+<p>In order to run a container, the host must be running a container engine. Many engines are avilable, including the <a href="https://www.docker.com/">Docker</a> engine, but alternatives such as <a href="https://podman.io/">Podman</a>, <a href="https://apptainer.org/">Apptainer</a> are increasingly popular.</p>
+</section>
+<section id="container-creation" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="container-creation"><span class="header-section-number">6.1.2</span> Container creation</h3>
+<p>In order to create a container image, a container builder is required. Docker is a standard option, with <a href="https://buildah.io/">Buildah</a> an alternative. Typically a container builder requires a specification for what to include in the container image. In the case of Docker, the Dockerfile provides simple instructions for creating the image.</p>
+</section>
+<section id="container-repositories" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="container-repositories"><span class="header-section-number">6.1.3</span> Container repositories</h3>
+<p>The final piece of the container ecosystem, are the container repositories. Many developers, vendors and organisations create standard containers that run well defined applications, and make them available via repositories. These can be downloaded (often directly by the container engine) and run, simplifying the deployment process.</p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a> is a registry of repositories, so it contains links to a huge number of container repositories, covering a wide range of applications.</p>
+</section>
+</section>
+<section id="workshop" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="workshop"><span class="header-section-number">6.2</span> Workshop</h2>
+<p>The practicalities of creating and running containers with Docker, is covered in <a href="https://github.com/jimbrooke/cloud-tech">workshop 1</a> of this segment.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

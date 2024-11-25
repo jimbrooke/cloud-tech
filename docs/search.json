@@ -134,7 +134,7 @@
     "href": "vms.html",
     "title": "5  Virtual Machines",
     "section": "",
-    "text": "Content coming",
+    "text": "5.1 Emulation vs Virtualisation\nIn an emulated VM, the CPU instruction set is simulated. This allows the VM to run any cpu architecture and support any guest OS. However, the work of simulating every instruction adds substantial overhead to the programmes running within the guest OS, and their performance is subsequently degraded. This may render some applications unusable.\nThe alternative is virtualisation of the CPU. In this case, the CPU instruction set is not simulated, and instructions are run directly on the CPU. A “hypervisor” allows the guest OS to share the CPU with the host OS. Applications are able to run with no additional overhead. However, the guest OS is constrained to those that are compatible with the host CPU.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Virtual Machines</span>"
     ]
@@ -144,7 +144,7 @@
     "href": "containers.html",
     "title": "6  Containers",
     "section": "",
-    "text": "Content coming",
+    "text": "6.1 Container Software\nContainers are typically distributed as “images”, which are fast and easy to start up and run. Containers were originally introduced by Docker, along with an image format. This format is now standardised by the Open Container Initiative (OCI).",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Containers</span>"
     ]
@@ -157,6 +157,36 @@
     "text": "Content coming",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Clusters</span>"
+    ]
+  },
+  {
+    "objectID": "vms.html#virtual-networks",
+    "href": "vms.html#virtual-networks",
+    "title": "5  Virtual Machines",
+    "section": "5.2 Virtual Networks",
+    "text": "5.2 Virtual Networks\nMuch as a computer is simulated by a virtual machine, a virtual network is a simulation of a network. VM software usually allows you to create a virtual network running entirely within the host. The Layer 2 and Layer 3 functionality, that is normally provided by physical switches and routers, is simply provided by software.\nHowever, virtual networks are not limited to running within a single host, and may cross multiple physical networks. For example, a virtual private network (VPN) is a simulated network that securely connects two endpoints via the internet, using encryption. A virtual local area network (VLAN) is a virtual network usually used to sub-divide a larger network into smaller management pieces.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Virtual Machines</span>"
+    ]
+  },
+  {
+    "objectID": "containers.html#container-software",
+    "href": "containers.html#container-software",
+    "title": "6  Containers",
+    "section": "",
+    "text": "6.1.1 Container Engines\nIn order to run a container, the host must be running a container engine. Many engines are avilable, including the Docker engine, but alternatives such as Podman, Apptainer are increasingly popular.\n\n\n6.1.2 Container creation\nIn order to create a container image, a container builder is required. Docker is a standard option, with Buildah an alternative. Typically a container builder requires a specification for what to include in the container image. In the case of Docker, the Dockerfile provides simple instructions for creating the image.\n\n\n6.1.3 Container repositories\nThe final piece of the container ecosystem, are the container repositories. Many developers, vendors and organisations create standard containers that run well defined applications, and make them available via repositories. These can be downloaded (often directly by the container engine) and run, simplifying the deployment process.\nhttps://hub.docker.com/ is a registry of repositories, so it contains links to a huge number of container repositories, covering a wide range of applications.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Containers</span>"
+    ]
+  },
+  {
+    "objectID": "containers.html#workshop",
+    "href": "containers.html#workshop",
+    "title": "6  Containers",
+    "section": "6.2 Workshop",
+    "text": "6.2 Workshop\nThe practicalities of creating and running containers with Docker, is covered in workshop 1 of this segment.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Containers</span>"
     ]
   }
 ]

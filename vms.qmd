@@ -4,4 +4,23 @@ format: html
 label: sec-vms
 ---
 
-Content coming
+A virtual machine (VM) is a simulation of a computer. It is a software programme which runs on a 'host' machine, but then allows a 'guest' operating system to be installed, which can then be used as if it were running on real computer hardware.
+
+There are a variety of reasons to run a VM. If you develop code that must be compatible with multiple operating systems, say, then you might run a VM for each supported OS which allows you to test your code.
+
+VMs are ubiquitous in management of large data centres, since they decouple the problems of managing hardware (eg. replacing failed components) and that of managing operating systems (eg. keeping up with updates). For example, running two identical VMs on two physical servers allows the system to continue operating even if one physical machine fails, or when an operating system update needs to be applied and tested.
+
+In cloud environment, VMs allow a provider (who owns, controls, and manages the physical hardware) to provide virtual servers to their customers.  The cloud provider might run multiple VMs, for several customers, on a single physical machine, with controls on how much cpu time each customers VM can use.  This allows the provider to maximise the number of cpu cycles that are used (or sold) and thereby maximise the return on their investment.
+
+
+## Emulation vs Virtualisation
+
+In an **emulated** VM, the CPU instruction set is simulated.  This allows the VM to run any cpu architecture and support any guest OS. However, the work of simulating every instruction adds substantial overhead to the programmes running within the guest OS, and their performance is subsequently degraded. This may render some applications unusable.
+
+The alternative is **virtualisation** of the CPU. In this case, the CPU instruction set is not simulated, and instructions are run directly on the CPU. A "hypervisor" allows the guest OS to share the CPU with the host OS. Applications are able to run with no additional overhead. However, the guest OS is constrained to those that are compatible with the host CPU.
+
+## Virtual Networks
+
+Much as a computer is simulated by a virtual machine, a virtual network is a simulation of a network.  VM software usually allows you to create a virtual network running entirely within the host.  The Layer 2 and Layer 3 functionality, that is normally provided by physical switches and routers, is simply provided by software.
+
+However, virtual networks are not limited to running within a single host, and may cross multiple physical networks.  For example, a virtual private network (VPN) is a simulated network that securely connects two endpoints via the internet, using encryption.  A virtual local area network (VLAN) is a virtual network usually used to sub-divide a larger network into smaller management pieces.
