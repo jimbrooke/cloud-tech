@@ -29,4 +29,4 @@ The final piece of the container ecosystem, are the container repositories. Many
 
 ## Workshop
 
-The practicalities of creating and running containers with Docker, is covered in [workshop 1](https://github.com/jimbrooke/cloud-tech) of this segment.
+The practicalities of creating and running containers with Docker, is covered in [workshop 1](https://github.com/jimbrooke/cloud-tutorial) of this segment.
